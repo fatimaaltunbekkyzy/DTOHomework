@@ -1,8 +1,6 @@
 package peaksoft.dtohomework.dto.houseDto.response;
-import jakarta.persistence.Column;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import peaksoft.dtohomework.dto.agencyDto.response.AgencyResponse;
 import peaksoft.dtohomework.enums.HouseType;
 
 @Data
@@ -16,7 +14,6 @@ public class HouseResponse {
     private String description;
     private HouseType houseType;
     private boolean active;
-//    private AgencyResponse agency;
 
     public HouseResponse(Long id, String address, int price, int room, String country, String description, HouseType houseType, boolean active) {
         this.id = id;
@@ -27,6 +24,5 @@ public class HouseResponse {
         this.description = description;
         this.houseType = houseType;
         this.active = active;
-//        this.agency = agency;
     }
 }

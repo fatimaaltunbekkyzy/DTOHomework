@@ -52,64 +52,24 @@ private final AgencyRepo agencyRepo;
 
     @Override
     public List<HouseResponse> getAll() {
-        List<House> all = houseRepo.findAll();
-        List<HouseResponse> houseResponseList = new ArrayList<>();
-
-        for (House house : all) {
-            Agency agency = house.getAgency();
-
-            AgencyResponse agencyResponse = new AgencyResponse(
-                    agency.getId(),
-                    agency.getName(),
-                    agency.getCountry(),
-                    agency.getEmail(),
-                    agency.getPhoneNumber()
-            );
-
-            HouseResponse houseResponse = new HouseResponse();
-            houseResponse.setId(house.getId());
-            houseResponse.setHouseType(house.getHouseType());
-            houseResponse.setAddress(house.getAddress());
-            houseResponse.setCountry(house.getCountry());
-            houseResponse.setActive(house.isActive());
-            houseResponse.setRoom(house.getRoom());
-            houseResponse.setPrice(house.getPrice());
-            houseResponse.setDescription(house.getDescription());
-//            houseResponse.setAgency(agencyResponse);
-
-            houseResponseList.add(houseResponse);
-        }
-
-        return houseResponseList;
+        return houseRepo.getAll();
     }
 
     @Override
     public HouseResponse getById(Long id) {
-        House house = houseRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("House not found with id: " + id));
+        House house = houseRepo.findById(id).orElseThrow(() ->
+                new NullPointerException(String.format("House with id %d not found", id)));
 
-        Agency agency = house.getAgency();
-
-        AgencyResponse agencyResponse = new AgencyResponse(
-                agency.getId(),
-                agency.getName(),
-                agency.getCountry(),
-                agency.getEmail(),
-                agency.getPhoneNumber()
+        return new HouseResponse(
+                house.getId(),
+                house.getAddress(),
+                house.getPrice(),
+                house.getRoom(),
+                house.getCountry(),
+                house.getDescription(),
+                house.getHouseType(),
+                house.isActive()
         );
-
-        HouseResponse houseResponse = new HouseResponse();
-        houseResponse.setId(house.getId());
-        houseResponse.setAddress(house.getAddress());
-        houseResponse.setPrice(house.getPrice());
-        houseResponse.setRoom(house.getRoom());
-        houseResponse.setCountry(house.getCountry());
-        houseResponse.setDescription(house.getDescription());
-        houseResponse.setHouseType(house.getHouseType());
-        houseResponse.setActive(house.isActive());
-//        houseResponse.setAgency(agencyResponse);
-
-        return houseResponse;
     }
 
     @Override
@@ -142,7 +102,7 @@ private final AgencyRepo agencyRepo;
     }
 
     @Override
-    public List<HouseResponse> getAvailableHouses() {
-        return List.of();
-    }
-}
+    public List<HouseResponse> getHousesIsBooking() {
+        return houseRepo.getHousesIsBooking();
+
+}}

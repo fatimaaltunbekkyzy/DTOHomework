@@ -18,7 +18,5 @@ public interface AgencyRepo extends JpaRepository<Agency,Long> {
     @Query("select new peaksoft.dtohomework.dto.houseDto.response.HouseResponse(" +
             "h.id, h.address, h.price, h.room, h.country, h.description, h.houseType, h.active) " +
             "FROM House h WHERE h.agency.id = :agencyId")
-//    @Query("select new peaksoft.dtohomework.dto.houseDto.response.HouseResponse"+"(h.id,h.address,h.price,h.room,h.country,h.description,h.houseType,h.active)" +
-//            "FROM House h WHERE h.agency.id = :id")
     List<HouseResponse> getAllHouseByAgencyId(@PathVariable("agencyId") Long agencyId);
 }

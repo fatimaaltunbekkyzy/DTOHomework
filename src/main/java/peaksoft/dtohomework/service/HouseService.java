@@ -20,5 +20,5 @@ public interface HouseService {
 
     SimpleResponse delete(Long id);
 
-    List<HouseResponse> getAvailableHouses();
+    List<HouseResponse> getHousesIsBooking();
 }

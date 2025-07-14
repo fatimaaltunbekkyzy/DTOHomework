@@ -1,10 +1,10 @@
 package peaksoft.dtohomework.api;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import peaksoft.dtohomework.dto.SimpleResponse;
+import peaksoft.dtohomework.dto.agencyDto.reguest.AgencyRequest;
+import peaksoft.dtohomework.dto.bookingDto.request.BookingRequest;
 import peaksoft.dtohomework.dto.bookingDto.response.BookingResponse;
 import peaksoft.dtohomework.service.BookingService;
 
@@ -19,5 +19,9 @@ public class BookingAPI {
     @GetMapping("/customer/{id}")
     public List<BookingResponse> getBookingsByCustomer(@PathVariable Long id) {
         return bookingService.findAllByCustomerId(id);
+    }
+    @PostMapping
+    SimpleResponse save (@RequestBody BookingRequest bookingRequest) {
+        return bookingService.save(bookingRequest);
     }
 }

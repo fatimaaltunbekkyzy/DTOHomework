@@ -41,7 +41,6 @@ public class HouseAPI {
 
     @GetMapping("/available")
     public List<HouseResponse> getAvailableHouses() {
-        return houseService.getAvailableHouses();
+        return houseService.getHousesIsBooking();
     }
-
 }

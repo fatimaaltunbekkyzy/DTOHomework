@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 public interface CustomerRepo  extends JpaRepository<Customer,Long> {
-    boolean existsByEmail(String email);
     @Query("select new peaksoft.dtohomework.dto.customerDto.response.CustomerResponse"
             + "(c.id,c.name,c.surname,c.email,c.gender,c.phoneNumber,c.dateOfBirth)FROM Customer c")
     List<CustomerResponse> getAll();
