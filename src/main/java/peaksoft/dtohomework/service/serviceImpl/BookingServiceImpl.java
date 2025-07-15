@@ -32,4 +32,10 @@ public class BookingServiceImpl implements BookingService {
     public SimpleResponse save(BookingRequest bookingRequest) {
        return null;
 
-}}
+}
+
+    @Override
+    public List<BookingResponse> getTotalBookingsByCustomer(Long customerId) {
+        return List.of();
+    }
+}
