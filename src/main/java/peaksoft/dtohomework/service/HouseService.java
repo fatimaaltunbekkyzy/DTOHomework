@@ -21,4 +21,5 @@ public interface HouseService {
     SimpleResponse delete(Long id);
 
     List<HouseResponse> getHousesIsBooking();
+      List<HouseResponse>getTotalHousesByAgency(Long agencyId);
 }

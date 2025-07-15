@@ -1,5 +1,6 @@
 package peaksoft.dtohomework.service.serviceImpl;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import peaksoft.dtohomework.dto.SimpleResponse;
@@ -7,18 +8,19 @@ import peaksoft.dtohomework.dto.bookingDto.request.BookingRequest;
 import peaksoft.dtohomework.dto.bookingDto.response.BookingResponse;
 import peaksoft.dtohomework.entities.Agency;
 import peaksoft.dtohomework.entities.Booking;
+import peaksoft.dtohomework.entities.Customer;
+import peaksoft.dtohomework.entities.House;
 import peaksoft.dtohomework.repo.BookingRepo;
+import peaksoft.dtohomework.repo.CustomerRepo;
+import peaksoft.dtohomework.repo.HouseRepo;
 import peaksoft.dtohomework.service.BookingService;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
+@RequiredArgsConstructor
 public class BookingServiceImpl implements BookingService {
-    private final BookingRepo bookingRepo;
-
-    public BookingServiceImpl(BookingRepo bookingRepo) {
-        this.bookingRepo = bookingRepo;
-    }
 
     @Override
     public List<BookingResponse> findAllByCustomerId(Long customerId) {
@@ -28,14 +30,6 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public SimpleResponse save(BookingRequest bookingRequest) {
-        Booking booking = new Booking();
-        booking.setId(bookingRequest.bookingId());
+       return null;
 
-        bookingRepo.save(booking);
-        return SimpleResponse.builder()
-                .httpStatus(HttpStatus.OK)
-                .message("Successfully saved")
-                .build();
-
-    }
-}
+}}

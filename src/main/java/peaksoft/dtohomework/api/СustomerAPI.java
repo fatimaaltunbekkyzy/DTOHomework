@@ -5,6 +5,7 @@ import peaksoft.dtohomework.dto.SimpleResponse;
 import peaksoft.dtohomework.dto.customerDto.request.CustomerRequest;
 import peaksoft.dtohomework.dto.customerDto.request.UpdateCustomerRequest;
 import peaksoft.dtohomework.dto.customerDto.response.CustomerResponse;
+import peaksoft.dtohomework.dto.customerDto.response.CustomerResponseSearch;
 import peaksoft.dtohomework.service.CustomerService;
 import java.util.List;
 
@@ -39,4 +40,7 @@ public class СustomerAPI {
     public SimpleResponse delete (@PathVariable Long id) {
         return customerService.delete(id);
     }
-}
+    @GetMapping("/search")
+    public List<CustomerResponseSearch> searchCustomers(@RequestParam String name) {
+        return customerService.searchCustomers(name);
+    }}

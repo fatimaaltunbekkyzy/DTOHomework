@@ -6,9 +6,12 @@ import peaksoft.dtohomework.dto.SimpleResponse;
 import peaksoft.dtohomework.dto.customerDto.request.CustomerRequest;
 import peaksoft.dtohomework.dto.customerDto.request.UpdateCustomerRequest;
 import peaksoft.dtohomework.dto.customerDto.response.CustomerResponse;
+import peaksoft.dtohomework.dto.customerDto.response.CustomerResponseSearch;
 import peaksoft.dtohomework.entities.Customer;
 import peaksoft.dtohomework.repo.CustomerRepo;
 import peaksoft.dtohomework.service.CustomerService;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -93,5 +96,25 @@ public class CustomerServiceImpl implements CustomerService {
                 .httpStatus(HttpStatus.OK)
                 .message("Successfully deleted")
                 .build();
+    }
+
+    @Override
+    public List<CustomerResponseSearch> searchCustomers(String name) {
+        List<Customer> customers = customerRepo.searchCustomers(name);
+        List<CustomerResponseSearch> responses = new ArrayList<>();
+
+        for (Customer customer : customers) {
+            CustomerResponseSearch response = new CustomerResponseSearch(
+                    customer.getId(),
+                    customer.getName(),
+                    customer.getEmail(),
+                    customer.getGender(),
+                    customer.getPhoneNumber(),
+                    customer.getDateOfBirth()
+            );
+            responses.add(response);
+        }
+
+        return responses;
     }
 }

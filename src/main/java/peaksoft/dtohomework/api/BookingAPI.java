@@ -24,4 +24,5 @@ public class BookingAPI {
     SimpleResponse save (@RequestBody BookingRequest bookingRequest) {
         return bookingService.save(bookingRequest);
     }
+
 }

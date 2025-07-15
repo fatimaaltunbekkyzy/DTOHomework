@@ -3,6 +3,7 @@ import peaksoft.dtohomework.dto.SimpleResponse;
 import peaksoft.dtohomework.dto.customerDto.request.CustomerRequest;
 import peaksoft.dtohomework.dto.customerDto.request.UpdateCustomerRequest;
 import peaksoft.dtohomework.dto.customerDto.response.CustomerResponse;
+import peaksoft.dtohomework.dto.customerDto.response.CustomerResponseSearch;
 import peaksoft.dtohomework.entities.Booking;
 
 import java.util.List;
@@ -20,5 +21,6 @@ public interface CustomerService {
 
     SimpleResponse delete(Long id);
 
+    List<CustomerResponseSearch> searchCustomers(String name);
 
 }

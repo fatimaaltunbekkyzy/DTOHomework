@@ -10,4 +10,6 @@ public interface BookingService {
     List<BookingResponse> findAllByCustomerId(Long customerId);
 
     SimpleResponse save(BookingRequest bookingRequest);
+    List<BookingResponse> getTotalBookingsByCustomer(Long customerId);
+
 }
