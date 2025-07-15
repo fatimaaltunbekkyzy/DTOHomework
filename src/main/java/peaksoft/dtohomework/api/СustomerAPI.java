@@ -40,6 +40,7 @@ public class СustomerAPI {
     public SimpleResponse delete (@PathVariable Long id) {
         return customerService.delete(id);
     }
+
     @GetMapping("/search")
     public List<CustomerResponseSearch> searchCustomers(@RequestParam String name) {
         return customerService.searchCustomers(name);

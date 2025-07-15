@@ -43,4 +43,9 @@ public class HouseAPI {
     public List<HouseResponse> getAvailableHouses() {
         return houseService.getHousesIsBooking();
     }
+    @GetMapping("/search")
+    public List<HouseResponse> searchHouses(@RequestParam(required = false) String country,
+                                            @RequestParam(required = false) Integer room) {
+        return houseService.searchHouses(country, room);
+    }
 }

@@ -105,4 +105,10 @@ private final AgencyRepo agencyRepo;
     public List<HouseResponse> getHousesIsBooking() {
         return houseRepo.getHousesIsBooking();
 
-}}
+}
+
+    @Override
+    public List<HouseResponse> searchHouses(String country, Integer room) {
+        return houseRepo.searchHouses(country, room);
+    }
+}
